@@ -1,2 +1,2 @@
 # hanabi
-Hanabi (aka the best board game ever) goes digital
+Hanabi (aka the best board game ever) goes digital.
