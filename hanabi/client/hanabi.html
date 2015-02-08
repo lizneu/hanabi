@@ -1,14 +1,23 @@
 <head>
-  <title>hanabi</title>
+    <title>hanabi</title>
 </head>
 
 <body>
-  <h1>Welcome to HANABI!</h1>
+<div class="container">
+    <header class="page-header">
+        <h1>Welcome to HANABI!</h1>
+        {{> loginButtons}}
+    </header>
 
-  {{> hello}}
+    <section>
+        {{#if currentUser}}
+            {{> hello}}
+        {{/if}}
+    </section>
+</div>
 </body>
 
 <template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+    <button>Click Me</button>
+    <p>You've pressed the button {{counter}} times.</p>
 </template>
