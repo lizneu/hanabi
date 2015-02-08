@@ -8,3 +8,4 @@ meteor-platform
 accounts-facebook
 accounts-ui
 bootstrap
+service-configuration
