@@ -1,0 +1,25 @@
+<template name="home">
+  <head>
+    <title>hanabi</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="page-header">
+        <h1>Welcome to HANABI!</h1>
+        {{> loginButtons}}
+      </header>
+
+      <section>
+        {{#if currentUser}}
+          {{> hello}}
+        {{/if}}
+      </section>
+    </div>
+  </body>
+</template>
+
+<template name="hello">
+  <button>Click Me</button>
+  <p>You've pressed the button {{counter}} times.</p>
+</template>
