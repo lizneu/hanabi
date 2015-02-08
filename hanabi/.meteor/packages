@@ -9,3 +9,4 @@ accounts-facebook
 accounts-ui
 bootstrap
 iron:router
+service-configuration
