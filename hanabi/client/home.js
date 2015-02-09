@@ -1,29 +1,23 @@
-Users = new Mongo.Collection("users");
-var friends;
-var invites;
+var friends = Meteor.subscribe("friends");
+var invites = Meteor.subscribe("invites");
 
-if (Meteor.isClient) {
-  friends = Meteor.subscribe("friends");
-  invites = Meteor.subscribe("invites");
+Template.home.helpers({
+  friends: function () {
+    return Users.find({userId: {$in: this.friends}});
+  },
+  invites: function () {
+    return Users.find({userId: {$in: this.invites}});
+  },
+  allUsers: function() {
+    return Users.find();
+  }
+});
 
-  Template.body.helpers({
-    friends: function () {
-      return Users.find({userId: {$in: this.friends}});
-    },
-    invites: function () {
-      return Users.find({userId: {$in: this.invites}});
-    },
-    allUsers: function() {
-      return Users.find();
-    }
-  });
-
-  Template.body.events({
-    'click add': function () {
-      // need to implement search
-    }
-  });
-}
+Template.body.events({
+  'click add': function () {
+    // need to implement search
+  }
+});
 
 Meteor.methods({
   acceptInvite: function (inviterId) {
@@ -37,9 +31,3 @@ Meteor.methods({
     Users.update(toInvite.id, {$set: {invites: Meteor.userId()}}); // add to list
   }
 });
-
-if (Meteor.isServer) {
-  Meteor.publish("users", function () {
-    return Users.find();
-  });
-}
